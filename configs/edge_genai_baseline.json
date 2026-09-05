@@ -1,0 +1,102 @@
+{
+  "npu": {
+    "peak_macs_per_cycle": 1024,
+    "frequency_mhz": 800,
+    "dram_bandwidth_gbps": 25,
+    "dram_energy_pj_per_byte": 15.0,
+    "utilization": 0.72,
+    "banks": 16
+  },
+  "memories": [
+    {
+      "name": "SRAM-6T",
+      "kind": "sram",
+      "capacity_kb": 2048,
+      "bandwidth_gbps": 512,
+      "read_energy_pj_per_byte": 0.16,
+      "write_energy_pj_per_byte": 0.20,
+      "area_mm2_per_mb": 0.62,
+      "retention_ms": null,
+      "refresh_interval_us": null,
+      "refresh_energy_nj_per_mb": 0.0,
+      "soft_error_fit_per_mb": 10.0,
+      "endurance_cycles": null
+    },
+    {
+      "name": "eDRAM",
+      "kind": "edram",
+      "capacity_kb": 8192,
+      "bandwidth_gbps": 640,
+      "read_energy_pj_per_byte": 0.11,
+      "write_energy_pj_per_byte": 0.14,
+      "area_mm2_per_mb": 0.29,
+      "retention_ms": 1.0,
+      "refresh_interval_us": 64.0,
+      "refresh_energy_nj_per_mb": 0.45,
+      "soft_error_fit_per_mb": 18.0,
+      "endurance_cycles": null
+    },
+    {
+      "name": "eMRAM",
+      "kind": "emram",
+      "capacity_kb": 4096,
+      "bandwidth_gbps": 384,
+      "read_energy_pj_per_byte": 0.22,
+      "write_energy_pj_per_byte": 0.75,
+      "area_mm2_per_mb": 0.40,
+      "retention_ms": 31536000000,
+      "refresh_interval_us": null,
+      "refresh_energy_nj_per_mb": 0.0,
+      "soft_error_fit_per_mb": 7.0,
+      "endurance_cycles": 1000000000000
+    },
+    {
+      "name": "RRAM",
+      "kind": "rram",
+      "capacity_kb": 4096,
+      "bandwidth_gbps": 256,
+      "read_energy_pj_per_byte": 0.08,
+      "write_energy_pj_per_byte": 5.0,
+      "area_mm2_per_mb": 0.22,
+      "retention_ms": 31536000000,
+      "refresh_interval_us": null,
+      "refresh_energy_nj_per_mb": 0.0,
+      "soft_error_fit_per_mb": 15.0,
+      "endurance_cycles": 10000000
+    }
+  ],
+  "workloads": [
+    {
+      "name": "edge_cnn_block",
+      "phase": "cnn",
+      "macs": 420000000,
+      "weight_bytes": 3100000,
+      "activation_read_bytes": 5200000,
+      "activation_write_bytes": 2700000,
+      "reuse_factor": 6.0,
+      "target_latency_ms": 8.0
+    },
+    {
+      "name": "transformer_prefill_128",
+      "phase": "prefill",
+      "macs": 1250000000,
+      "weight_bytes": 12500000,
+      "activation_read_bytes": 9800000,
+      "activation_write_bytes": 6100000,
+      "reuse_factor": 3.0,
+      "target_latency_ms": 30.0
+    },
+    {
+      "name": "transformer_decode_token",
+      "phase": "decode",
+      "macs": 90000000,
+      "weight_bytes": 12500000,
+      "activation_read_bytes": 1700000,
+      "activation_write_bytes": 950000,
+      "kv_cache_read_bytes": 4200000,
+      "kv_cache_write_bytes": 33000,
+      "reuse_factor": 1.15,
+      "target_latency_ms": 10.0
+    }
+  ]
+}
